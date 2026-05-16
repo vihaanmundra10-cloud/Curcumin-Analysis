@@ -2,7 +2,7 @@ import random
 import math
 import matplotlib.pyplot as plt
 import pandas as pd
-
+import streamlit as st
 
 n = 200        
 months = 13    
@@ -54,7 +54,7 @@ def run_many_last(sim_func, runs):
         all_runs.append(sim_func())
         last_num.append(all_runs[-1][-1])
         
-    print( sum(last_num)/len(last_num))
+    st.write( sum(last_num)/len(last_num))
         
     
     return all_runs
@@ -65,7 +65,7 @@ run_many_last(simulate_nrt, 100000)
 run_many_last(simulate_smoker, 100000)
 run_many_last(simulate_non_smoker, 100000)
 
-print("\n\n\n")
+st.write("\n\n\n")
 
 def run_many_1(sim_func, runs):
     all_runs = []
@@ -287,10 +287,10 @@ df3.index = range(1, len(df3) + 1)
 df4 = pd.DataFrame(avg_list_nrt, columns=["Simulating with NRT "])
 df4.index = range(1, len(df4) + 1)
 
-print(df1)
-print(df2)
-print(df3)
-print(df4)
+st.write(df1)
+st.write(df2)
+st.write(df3)
+st.write(df4)
 
 #Creating the Graph
 plt.plot(df1.index, df1["Simulating with Curcumin Treatment "], label="Curcumin Treatment", marker='o')
